@@ -62,6 +62,7 @@
             var s = document.createElement("script");
             s.src = "https://www.effectiveratecpm.com/vxv364y5y?key=07478650738f142fbcc9dffac6fbcd1e";
             s.async = true;
+            s.crossOrigin = "anonymous";
             s.onload = function() {
                 console.log("Adsterra successfully loaded at " + new Date().toISOString());
                 updateDebug("Adsterra Loaded Successfully");
@@ -69,10 +70,11 @@
             s.onerror = function() {
                 console.error("Adsterra failed to load at " + new Date().toISOString());
                 // Try to fetch the script to get more error details
-                fetch(s.src)
+                fetch(s.src, { mode: 'no-cors' })
                     .then(response => {
                         console.log("Fetch response status: " + response.status);
-                        updateDebug("Adsterra Failed - Status: " + response.status);
+                        console.log("Fetch response type: " + response.type);
+                        updateDebug("Adsterra Failed - Fetch Status: " + response.status + ", Type: " + response.type);
                     })
                     .catch(err => {
                         console.error("Fetch error: " + err.message);
