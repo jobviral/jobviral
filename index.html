@@ -69,7 +69,6 @@
             };
             s.onerror = function() {
                 console.error("Adsterra failed to load at " + new Date().toISOString());
-                // Try to fetch the script to get more error details
                 fetch(s.src, { mode: 'no-cors' })
                     .then(response => {
                         console.log("Fetch response status: " + response.status);
