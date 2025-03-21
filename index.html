@@ -1,22 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Redirect</title>
     <style>
-        body { text-align: center; padding: 20px; }
-        #continue { display: none; margin-top: 20px; }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f0f0f0;
+        }
+        #continue {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #debug {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
-    <h1>Redirecting...</h1>
-    <p>Wait 10 seconds, then click.</p>
+    <h1>Redirecting to Your Job...</h1>
+    <p>Wait 10 seconds, then click below. Auto-redirect in 20 seconds.</p>
     <button id="continue" onclick="window.location='https://www.naukri.com'">Continue</button>
+    <div id="debug">Loading...</div>
     <script>
-        setTimeout(function() { document.getElementById('continue').style.display = 'block'; }, 10000);
-        var s = document.createElement("script");
-        s.src = "https://www.effectiveratecpm.com/vxv364y5y?key=07478650738f142fbcc9dffac6fbcd1e";
-        s.async = true;
-        document.body.appendChild(s);
+        // Debug function
+        function updateDebug(msg) {
+            document.getElementById('debug').innerHTML = msg;
+        }
+
+        // Show button after 10s
+        setTimeout(function() {
+            document.getElementById('continue').style.display = 'block';
+            console.log("Button visible at " + new Date().toISOString());
+            updateDebug("Button Visible");
+        }, 10000);
+
+        // Auto-redirect after 20s
+        setTimeout(function() {
+            console.log("Auto-redirecting at " + new Date().toISOString());
+            window.location = "https://www.naukri.com";
+        }, 20000);
+
+        // Load PropellerAds script
+        try {
+            console.log("Loading PropellerAds...");
+            var s = document.createElement("script");
+            s.src = "https://whoushex.top/4/9115718"; // Replace with your PropellerAds link
+            s.async = true;
+            s.onload = function() {
+                console.log("PropellerAds loaded at " + new Date().toISOString());
+                updateDebug("PropellerAds Loaded");
+            };
+            s.onerror = function() {
+                console.error("PropellerAds failed at " + new Date().toISOString());
+                updateDebug("PropellerAds Failed");
+            };
+            document.body.appendChild(s);
+        } catch (e) {
+            console.error("Error: " + e.message);
+            updateDebug("Error: " + e.message);
+        }
     </script>
 </body>
 </html>
