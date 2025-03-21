@@ -58,21 +58,22 @@
 
         // Load PropellerAds script
         try {
-            console.log("Loading PropellerAds...");
+            console.log("Starting PropellerAds load...");
             var s = document.createElement("script");
-            s.src = "https://www.effectiveratecpm.com/cjr88r5it?key=c85a0c1b57d2fb88e7847bd23843d12b"; // Replace with your PropellerAds link
+            s.src = "https://www.effectiveratecpm.com/vxv364y5y?key=07478650738f142fbcc9dffac6fbcd1e"; // Replace with your PropellerAds link
             s.async = true;
             s.onload = function() {
-                console.log("PropellerAds loaded at " + new Date().toISOString());
-                updateDebug("PropellerAds Loaded");
+                console.log("PropellerAds successfully loaded at " + new Date().toISOString());
+                updateDebug("PropellerAds Loaded Successfully");
             };
             s.onerror = function() {
-                console.error("PropellerAds failed at " + new Date().toISOString());
-                updateDebug("PropellerAds Failed");
+                console.error("PropellerAds failed to load at " + new Date().toISOString());
+                updateDebug("PropellerAds Failed to Load");
             };
             document.body.appendChild(s);
+            console.log("PropellerAds script appended to body");
         } catch (e) {
-            console.error("Error: " + e.message);
+            console.error("PropellerAds error: " + e.message);
             updateDebug("Error: " + e.message);
         }
     </script>
