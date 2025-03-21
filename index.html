@@ -68,7 +68,16 @@
             };
             s.onerror = function() {
                 console.error("Adsterra failed to load at " + new Date().toISOString());
-                updateDebug("Adsterra Failed to Load");
+                // Try to fetch the script to get more error details
+                fetch(s.src)
+                    .then(response => {
+                        console.log("Fetch response status: " + response.status);
+                        updateDebug("Adsterra Failed - Status: " + response.status);
+                    })
+                    .catch(err => {
+                        console.error("Fetch error: " + err.message);
+                        updateDebug("Adsterra Failed - Fetch Error: " + err.message);
+                    });
             };
             document.body.appendChild(s);
             console.log("Adsterra script appended to body");
